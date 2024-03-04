@@ -1,0 +1,31 @@
+{
+  "name": "smoke-test-action",
+  "author": "Risk and Safety Solutions",
+  "version": "0.0.0",
+  "description": "A Github action that runs a smoke test with an exponential backoff.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "lint": "eslint ./src"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "eslint": "^8.57.0",
+    "eslint-plugin-github": "^4.10.2",
+    "eslint-plugin-prettier": "^5.1.3",
+    "typescript": "^5.3.3"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "printWidth": 120,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
+}

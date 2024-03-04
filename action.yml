@@ -1,0 +1,19 @@
+name: 'Smoke Test'
+description: 'Runs a smoke test on an application with an exponential backoff.'
+author: 'Risk and Safety Solutions'
+
+# Define your inputs here.
+# inputs:
+#   milliseconds:
+#     description: 'Your input description here'
+#     required: true
+#     default: '1000'
+
+# Define your outputs here.
+outputs:
+  message:
+    description: "Just seeing if I can get this to work, y'know?"
+
+runs:
+  using: node20
+  main: dist/index.js
