@@ -28586,25 +28586,24 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(9093));
 const async_retry_1 = __importDefault(__nccwpck_require__(9649));
 const axios_1 = __importDefault(__nccwpck_require__(3503));
-const healthUrl = core.getInput('url');
+const healthUrl = core.getInput('url', { required: true });
 const checkHealth = async (bail) => {
     console.log('Making a call to server with url', healthUrl);
     const res = await axios_1.default.get(healthUrl);
-    console.log('res', res.data);
     if (res.status === 200) {
         return res.data;
     }
     if (res.status === 404) {
         bail(new Error('Server not up'));
     }
-    return bail(new Error(`unknown error: ${res.status}`));
+    return bail(new Error(`Unknown error: ${res.status}`));
 };
 const retries = Number(core.getInput('retries'));
 const factor = Number(core.getInput('factor'));
 const maxTimeout = Number(core.getInput('wait_seconds')) * 60 * 1000;
 (0, async_retry_1.default)(checkHealth, { retries, factor, maxTimeout })
-    .then((value) => {
-    console.log(value);
+    .then(() => {
+    console.log('Server responded with code 200. Should be good to go!');
     process.exit(0);
 })
     .catch((error) => {
