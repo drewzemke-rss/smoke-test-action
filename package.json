@@ -5,7 +5,7 @@
   "description": "A Github action that runs a smoke test with an exponential backoff.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --build",
+    "build": "ncc build src/index.ts",
     "lint": "eslint ./src"
   },
   "exports": {
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
+    "@vercel/ncc": "^0.38.1",
     "eslint": "^8.57.0",
     "eslint-plugin-github": "^4.10.2",
     "eslint-plugin-prettier": "^5.1.3",
