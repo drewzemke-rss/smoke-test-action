@@ -3,16 +3,25 @@ description: 'Runs a smoke test on an application with an exponential backoff.'
 author: 'Risk and Safety Solutions'
 
 # Define your inputs here.
-# inputs:
-#   milliseconds:
-#     description: 'Your input description here'
-#     required: true
-#     default: '1000'
+inputs:
+  url:
+    description: 'The URL of your application.'
+    required: true
 
-# Define your outputs here.
-outputs:
-  message:
-    description: "Just seeing if I can get this to work, y'know?"
+  wait_seconds:
+    description: 'How long to wait between the first and second pings' 
+    required: false
+    default: 3
+
+  retries:
+    description: 'How many times the URL will be pinged before giving up'
+    required: false
+    default: 20
+
+  factor:
+    description: 'The multiplicative factor used to compute consecutive wait times.'
+    required: false
+    default: 2
 
 runs:
   using: node20
